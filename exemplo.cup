@@ -1,0 +1,23 @@
+import java_cup.runtime.*;
+
+terminal Integer INTEIRO;
+terminal MAIS, MENOS, PTVIRG, MULT, DIV, POTEN, REST;
+
+non terminal inicio;
+non terminal Integer expr;
+
+precedence left MAIS, MENOS, MULT, DIV, POTEN, REST;
+
+start with inicio;
+
+inicio ::= expr:e PTVIRG {: System.out.println(e); :}
+         ;
+
+expr ::= expr:a MAIS INTEIRO:b  {: RESULT = a.intValue() + b.intValue(); :}
+       | expr:a MENOS INTEIRO:b {: RESULT = a.intValue() - b.intValue(); :}
+       | expr:a MULT INTEIRO:b {: RESULT = a.intValue() * b.intValue(); :}
+       | expr:a DIV INTEIRO:b {: RESULT = a.intValue() / b.intValue(); :}
+       | expr:a POTEN INTEIRO:b {: RESULT = a.intValue() ^ b.intValue(); :}
+       | expr:a REST INTEIRO:b {: RESULT = a.intValue() % b.intValue(); :}
+       | INTEIRO:a              {: RESULT = a.intValue(); :}
+       ;
