@@ -4,7 +4,7 @@ public class Main {
   public static void main(String[] args) throws Exception {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     System.out.println("Digite expressões (termine com ';') e pressione ENTER. Ctrl+C para sair.");
-
+    
     while (true) {
       System.out.print("> ");
       String linha = reader.readLine();
